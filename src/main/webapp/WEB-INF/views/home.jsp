@@ -17,7 +17,7 @@
 	5. 젠킨스 사용하기
 	6. tiles
 	7.  ㅇㅇ
-	
+	8. ㅋㅋ
  -->
 <P>  The time on the server is ${serverTime}. </P>
 </body>
