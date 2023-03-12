@@ -19,6 +19,7 @@
 	7.  ㅇㅇ
 	8. test  
 	9.test
+	10.test
  -->
 <P>  The time on the server is ${serverTime}. </P>
 </body>
