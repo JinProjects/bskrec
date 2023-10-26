@@ -13,4 +13,8 @@
 		<put-attribute name="title" value="메인페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
 	</definition>
+	<definition name="popup-layout" template="/WEB-INF/views/common/popUp_layout.jsp">
+		<put-attribute name="title" value="경기검색" />
+		<put-attribute name="body" value="" />
+	</definition>
 </tiles-definitions>

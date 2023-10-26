@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="/club/teamRegForm" extends="baseLayout">
+		<put-attribute name="title" value="팀등록페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/club/teamRegForm.jsp" />
+	</definition>
+	<definition name="/club/playerRegForm" extends="baseLayout">
+		<put-attribute name="title" value="선수등록페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/club/playerRegForm.jsp" />
+	</definition>
+</tiles-definitions> 

@@ -1,7 +1,163 @@
-@charset "UTF-8";
-*{
-	margin: 0px; padding:0px; vertical-align: middle;
+@charset "utf-8";
+/* header{
+} */
+article{
+	/* border: 1px solid black; */
+    position: relative;
+    margin: 0 auto;
+    padding: 0px 4rem 8rem;
+    width: 58rem;
+    /* width: 800px; */
+    margin-top: 10px;
 }
-.clear{
-	clear:both;
+#article-wrap{
+	margin-bottom: auto;
+}
+section{
+    text-align: center;
+}
+.team-versus-wrap{
+    border: 1px solid #ccc;
+    	/* border: 1px solid red; */
+}
+.team-img-wrap{
+ /*    width: 100%; */
+    position: relative;
+}
+.team-img-wrap div{
+    /* width: 200px; */
+    display: inline-block;
+}
+
+.team-img-wrap .team-home{
+    font-size: 100px;
+}
+.team-img-wrap .versus{
+    font-size: 70px;
+    padding: 0 30px;
+    color: #dd6b0e;
+}
+.team-img-wrap .team-away{
+    font-size: 100px;
+    color: #a59c9c;
+}
+
+.team-score-wrap div{
+    display: inline-block;
+}
+.team-score-wrap p {
+    font-size: 2.5rem;
+}
+.team-score-wrap .team-home-score{
+}
+.team-score-wrap .colon {
+    padding: 0 90px;
+}
+.team-name{
+    width: 100%;
+    display: flex;
+    justify-content:  space-evenly;
+}
+
+/* 신생팀 */
+#team-member-wrap{
+    width: 800px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#team-member-wrap .team-register{
+    width: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid #ccc;
+}
+
+#team-member-wrap .team-register img{
+    width: 250px;
+    margin-top: 10px;
+    display: flex;
+}
+#team-member-wrap .team-register .team-info{
+    margin: auto 0;
+}
+#team-member-wrap .team-register .team-info p{
+    margin-bottom: 3px;
+}
+#team-member-wrap .team-register .team-info .tit{
+    font-weight: bold;
+}
+#team-member-wrap .team-register .team-info .content{
+    color: #a59c9c;
+}
+/* 최근 등록선수 */
+
+#team-member-wrap .member-register{
+    display: flex;
+    justify-content: space-evenly;
+    width: 350px;
+    border: 1px solid #ccc;
+}
+#team-member-wrap .member-register .member-img{
+    /* width: 250px; */
+    font-size: 150px;
+}
+#team-member-wrap .member-register .member-info{
+    margin: auto 0;
+}
+#team-member-wrap .member-register .member-info p{
+    margin-bottom: 3px;
+}
+#team-member-wrap .member-register .member-info .tit{
+    font-weight: bold;
+}
+#team-member-wrap .member-register .member-info .content{
+    color: #a59c9c;
+}
+
+/* 중고거래 */
+#article-wrap {
+    position: relative;
+    /* margin: 0 auto; */
+    margin-top: 20px;
+    width: 800px;
+    height: 200px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+}
+
+#article-wrap .used-article{
+    width: 300px;
+    /* margin: auto 0; */
+    /* border: 1px solid #ccc; */
+    /* padding: 20px 60px; */
+    text-align: left;
+    /* display: inline-block; */
+}
+/* 최신글 */
+#article-wrap .comm-article{
+    width: 300px;
+    text-align: left;
+    /* margin: auto 0; */
+    /* border: 1px solid #ccc; */
+    /* padding: 20px 60px; */
+    /* display: inline-block; */
+}
+#article-wrap h4{
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+#article-wrap ul li{
+    border-bottom: 1px solid #ccc;
+}
+#article-wrap ul li::before{
+    content:"\25AA";
+    /* font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em; */
 }

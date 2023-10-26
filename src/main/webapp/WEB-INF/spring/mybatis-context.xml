@@ -9,10 +9,10 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 	
-<aop:aspectj-autoproxy />
+<aop:aspectj-autoproxy /> 
 <tx:annotation-driven transaction-manager="transactionManager"/>
 <bean id="propertyPlaceholderConfigurer"
-		class="org.spirngframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	 <property name="locations">
 	 	<value>/WEB-INF/config/jdbc/jdbc.properties</value>
 	 </property>
@@ -23,19 +23,20 @@
 			value="${jdbc.driverClassName}" />
 	<property name="url" value="${jdbc.url}" />
 	<property name="username" value="${jdbc.username}" />
-	<property name="userpassword" value="${jdbc.userpassword}" />
+	<property name="password" value="${jdbc.password}" />
 </bean>
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dataSource" />
 	<property name="configLocation" value="classpath:mybatis/models/modelConfig.xml" />
-	<property name="mapperLocation" value="classpath:mybatis/mappers/*.xml" />
+	<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 </bean>
 <bean id="transactionManager"
-	class="org.springframework.jdbc.datasource.DataSourceTrasactionManager">
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	<property name="dataSource" ref="dataSource"/>
 </bean>
 <bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate">
 	<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 </bean>
+
 </beans>

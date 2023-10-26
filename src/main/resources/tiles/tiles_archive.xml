@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="/archive/archiveForm" extends="baseLayout">
+		<put-attribute name="title" value="경기기록등록" />
+		<put-attribute name="body" value="/WEB-INF/views/archive/archiveForm.jsp" />
+	</definition>
+	<definition name="/archive/playerArchiveDetail" extends="baseLayout">
+		<put-attribute name="title" value="선수 기록실" />
+		<put-attribute name="body" value="/WEB-INF/views/archive/playerArchiveDetail.jsp" />
+	</definition>
+	<definition name="/archive/teamArchiveDetail" extends="baseLayout">
+		<put-attribute name="title" value="팀 기록실" />
+		<put-attribute name="body" value="/WEB-INF/views/archive/teamArchiveDetail.jsp" />
+	</definition>
+	<definition name="/archive/playerArchiveForm" extends="baseLayout">
+		<put-attribute name="title" value="선수개인기록등록" />
+		<put-attribute name="body" value="/WEB-INF/views/archive/playerArchiveForm.jsp" />
+	</definition>
+	<definition name="/archive/teamArchiveForm" extends="baseLayout">
+		<put-attribute name="title" value="팀기록등록" />
+		<put-attribute name="body" value="/WEB-INF/views/archive/teamArchiveForm.jsp" />
+	</definition>
+	<definition name="/archive/gameCodePopup" extends="popup-layout">
+		<put-attribute name="body" value="/WEB-INF/views/archive/gameCodePopup.jsp"/>
+	</definition>
+	<definition name="/archive/teamArchivePopup" extends="popup-layout">
+		<put-attribute name="body" value="/WEB-INF/views/archive/teamArchivePopup.jsp"/>
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.archive">
+	<resultMap type="PlayerArchiveVO" id="playerArchiveResult">
+		<result property="gameCode" column="gameCode" />
+		<result property="member_id" column="member_id" />
+		<result property="team_name" column="team_name" />
+		<result property="twoPointCnt" column="twoPointCnt" />
+		<result property="twoPoint" column="twoPoint" />
+		<result property="threePointCnt" column="threePointCnt" />
+		<result property="threePoint" column="threePoint" />
+		<result property="freedrawCnt" column="freedrawCnt" />
+		<result property="freedraw" column="freedraw" />
+		<result property="faintzoneCnt" column="faintzoneCnt" />
+		<result property="faintzone" column="faintzone" />
+		<result property="assist" column="assist" />
+		<result property="offenseRebound" column="offenseRebound" />
+		<result property="defenseRebound" column="defenseRebound" />
+		<result property="block" column="block" />
+		<result property="steal" column="steal" />
+		<result property="foul" column="foul" />
+		<result property="turnover" column="turnover" />
+		<result property="gameStartTime"  column="gameStartTime" />
+		<result property="gameEndTime" column="gameEndTime"/>
+		<result property="creDate" column="creDate" />
+	</resultMap>
+	
+	<resultMap type="TeamArchiveVO" id="teamArchiveResult">
+		<result property="gameCode" column="gameCode"/>
+		<result property="reg_id" column="reg_id"/>
+		<result property="homeTeamName" column="homeTeamName" />
+		<result property="awayTeamName" column="awayTeamName" />
+		<result property="homeTeamScore" column="homeTeamScore" />
+		<result property="awayTeamScore" column="awayTeamScore" />
+		<result property="home1q" column="home1q" />
+		<result property="home2q" column="home2q" />
+		<result property="home3q" column="home3q" />
+		<result property="home4q" column="home4q" />
+		<result property="away1q" column="away1q" />
+		<result property="away2q" column="away2q" />
+		<result property="away3q" column="away3q" />
+		<result property="away4q" column="away4q" />
+		<result property="gameStartTime" column="gameStartTime" />
+		<result property="gameEndTime" column="gameEndTime" />
+		<result property="creDate" column="creDate" />
+	</resultMap>
+	<!-- parameterType="PlayerArchiveVO"<<대문자로 적어서 에러 -->
+	<insert id="insertPlayerArchive" parameterType="playerArchiveVO">
+		<!-- 게임코드 잘못됨
+			 팀경기등록에서 생성됨
+			 t_bskrec_result에서 gameCode 조회 후 바인딩하자
+			
+		 -->
+		<![CDATA[
+			insert into t_bskrec_member_archive(gameCode,
+												member_id,
+												team_name,
+												twoPointCnt,
+												twoPoint,
+												threePointCnt,
+												threePoint,
+												freedraw,
+												paintzoneCnt,
+												paintzone,
+												assist,
+												offenseRebound,
+												defenseRebound,
+												block,
+												steal,
+												foul,
+												turnover
+												)values(
+												#{gameCode},	
+												#{member_id},
+												#{team_name},
+												#{twoPointCnt},
+												#{twoPoint},
+												#{threePointCnt},
+												#{threePoint},
+												#{freedraw},
+												#{paintzoneCnt},
+												#{paintzone},
+												#{assist},
+												#{offenseRebound},
+												#{defenseRebound},
+												#{block},
+												#{steal},
+												#{foul},
+												#{turnover}
+												)
+		]]>
+	</insert>
+	<!-- 해당 선수 데이터를 가지고 오기 -->
+		<!-- 게임코드, 멤버이름, 포지션, 2점슛 시도, 2점 점수, 3점슛 시도, 3점 점수, 자유투시도, 자유투점수, 
+			어시스트, 리바운드, 블록, 스틸, 파울, 등록일-->
+	<!-- 파라미터가 전부 잘 들어오는데 안되는 경우 
+		 -db에서 더미데이터 생성 후 커밋을 안해서 발생한 오류
+	-->
+	<select id="selectGameData" parameterType="java.util.HashMap" resultMap="playerArchiveResult">
+		<![CDATA[
+			SELECT gameCode,
+				   twoPointCnt,
+				   twoPoint,
+				   threePointCnt,
+				   threePoint,
+				   freedrawCnt,
+				   freedraw,
+				   faintzoneCnt,
+				   faintzone,
+				   assist,
+				   offenseRebound,
+				   defenseRebound,
+				   block,
+				   steal,
+				   foul,
+				   turnover,
+				   to_char(creDate,'YYYY-MM-DD') as creDate 
+			FROM t_bskrec_member_archive
+			WHERE member_id = #{member_id}
+			  AND substr(gamecode,1,14) = #{gameCode}
+		]]>
+	</select>
+		<!-- 틀린코드
+			날짜 변환형식까지 적어주자
+		 	1. AND to_char(a.creDate) = replace(#{gameDate},'-','/')
+		 	뒤에 별칭을 형식에 맞게 작성해주면 정상적으로 값을 바인딩 할 수 있다.
+		 	2. to_char(a.creDate,'YYYY-MM-DD') as creDate   
+		 -->
+
+	<select id="selectPlayerList" parameterType="String" resultMap="playerArchiveResult">
+		<![CDATA[
+			SELECT member_id
+			FROM t_bskrec_team_member
+			WHERE team_name IN (SELECT team_name 
+								FROM t_bskrec_team_register
+								WHERE member_id = #{member_id})
+		]]>
+	</select>
+	<select id="selectTeamName" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT team_name
+			FROM t_bskrec_team_member
+			WHERE member_id = #{captain_id}
+		]]>	
+	</select>
+	<select id="selectAwayTeamName" parameterType="int" resultType="String">
+		<![CDATA[
+			SELECT count(team_name)
+			FROM t_bskrec_team_register
+			WHERE team_name = #{awayTeamName}
+		]]>
+	</select>
+	<select id="selectHomeTeamName" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT team_name
+			FROM t_bskrec_team_register
+			WHERE member_id = #{member_id}
+		]]>
+	</select>
+	<insert id="insertTeamArchive" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into t_bskrec_result (gameCode,
+										 homeTeamName,
+										 awayTeamName,
+										 homeTeamScore,
+										 awayTeamScore,
+										 home1q,
+										 home2q,
+										 home3q,
+										 home4q,
+										 away1q,
+										 away2q,
+										 away3q,
+										 away4q,
+										 gameStartTime,
+										 gameEndTime)
+										values
+										(#{gameCode},
+										 #{homeTeamName},
+										 #{awayTeamName},
+										 #{homeTeamScore},
+										 #{awayTeamScore},
+										 #{home1q},
+										 #{home2q},
+										 #{home3q},
+										 #{home4q},
+										 #{away1q},
+										 #{away2q},
+										 #{away3q},
+										 #{away4q},
+										 #{gameStartTime},
+										 #{gameEndTime}
+										)
+		]]>
+	</insert>
+	<select id="selectGameCode" parameterType="java.util.HashMap" resultMap="playerArchiveResult">
+		<![CDATA[
+		WITH gameCode_data AS (
+		    SELECT 
+		        to_char(to_date(substr(gameCode,1,14),'YYYYMMDDHH24MISS'),'YYYY-MM-DD HH24:MI:SS') as gameStartTime,
+		        ROW_NUMBER() OVER (ORDER BY gamecode) as gameCodeNum
+		    FROM t_bskrec_result
+		    WHERE to_date(substr(gamecode,1,8), 'YYYY-MM-DD') = #{gameDate}
+		)
+		SELECT gameStartTime||'('||gameCodeNum||')' as gameCode
+		FROM gameCode_data
+		ORDER BY gameCodeNum
+		]]>
+	</select>
+	<update id="updatePlayerArchive" parameterType="java.util.HashMap">
+		update t_bskrec_member_archive 
+		set twoPointCnt = #{twoPointCnt},
+			twoPoint = #{twoPoint},
+			threePointCnt = #{threePointCnt},
+			threePoint = #{threePoint},
+			freedrawCnt = #{freedrawCnt},
+			freedraw = #{freedraw},
+			faintzoneCnt = #{faintzoneCnt},
+			faintzone = #{faintzone},
+			assist = #{assist},
+			offenseRebound = #{offenseRebound},
+			defenseRebound = #{defenseRebound},
+			block = #{block},
+			steal = #{steal},
+			foul = #{foul},
+			turnover = #{turnover}
+		where substr(gameCode,1,14) = #{gameCode}
+		  and member_id = #{member_id}
+	</update>
+	<select id="selectTeamArchive" parameterType="java.util.HashMap" resultMap="teamArchiveResult">
+		<![CDATA[
+			select gameCode,
+				   homeTeamName,
+				   awayTeamName,
+				   homeTeamScore,
+				   awayTeamScore,
+				   home1q,
+				   home2q,
+				   home3q,
+				   home4q,
+				   away1q,
+				   away2q,
+				   away3q,
+				   away4q,
+				   gameStartTime,
+				   gameEndTime
+			  from t_bskrec_result
+			WHERE to_date(substr(gamecode,1,8), 'YYYY-MM-DD') = #{gameDate}
+			  AND hometeamname = #{homeTeamName}
+			  AND awayteamname = #{awayTeamName}
+		]]>
+	</select>
+	<update id="updateTeamArchive" parameterType="java.util.HashMap">
+		update t_bskrec_result
+		   set awayTeamName = #{awayTeamName},
+		   	   homeTeamScore = #{homeTeamScore},
+		   	   awayTeamScore = #{awayTeamScore},
+		   	   home1q = #{home1q},
+		   	   home2q = #{home2q},
+		   	   home3q = #{home3q},
+		   	   home4q = #{home4q},
+		   	   away1q = #{away1q},
+		   	   away2q = #{away2q},
+		   	   away3q = #{away3q},
+		   	   away4q = #{away4q},
+		   	   gameStartTime = #{h_gameStartTime},
+		   	   gameEndTIme = #{h_gameEndTime}
+		 where gameCode = #{gameCode}
+		   and reg_id = #{member_id}
+	</update>
+</mapper>	
+	

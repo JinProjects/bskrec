@@ -1,0 +1,69 @@
+@charset "utf-8";
+#outer-logo-wrap{
+   /*  width: 100%; */
+    height: 100%;
+    position: relative;
+}
+#outer-logo-wrap #inner-logo-wrap{
+    margin:auto;
+    width: 100px;
+    margin-top: 150px;
+    margin-bottom: 30px;
+}
+#outer-logo-wrap #inner-logo-wrap h2{
+    color: black;
+} 
+#outer-login-wrap{
+    /* display: flex; */
+    width: 100%;
+    border: solid 1px #ccc;
+}
+
+#outer-login-wrap .inner-login-wrap{
+    /* position: relative; */
+    width: 300px;
+    margin: auto;
+    border: solid 1px #ccc;
+}
+#outer-login-wrap .inner-login-wrap .login-area{
+    padding-top: 12px;
+}
+
+#outer-login-wrap .inner-login-wrap .login-area input{
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+#outer-login-wrap .inner-login-wrap .btn-login-wrap .btn-login{
+    width: 100%;
+    height: 45px;
+    margin-top: 38px;
+    background-color: #ccc;
+}
+
+#outer-login-wrap .member-find-wrap .find-wrap{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#outer-login-wrap .member-find-wrap .find-wrap li{
+    display: inline-block;
+    margin-right: 5px;
+    padding-right: 10px;
+    border-right: solid 1px #ccc;
+
+}
+/* .member-find-wrap .find_wrap li+li::before{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    width: 1px;
+    height: 12px;
+    border-radius: 3.5px;
+    background-color: #dadada;
+} */
+#outer-login-wrap .member-find-wrap .find-wrap li:nth-child(3){
+    border: none;
+}

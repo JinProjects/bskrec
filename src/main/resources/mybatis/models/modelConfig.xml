@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<!-- 상단으로 올리면 에러나지 않음 -->
+<!-- null값을 타입을 정해서 에러가 나지 않음 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="VARCHAR"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.bskrec.member.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.bskrec.club.vo.PlayerVO" alias="playerVO"/>
+		<typeAlias type="com.bskrec.club.vo.PlayerImageVO" alias="playerImageVO"/>
+		<typeAlias type="com.bskrec.club.vo.TeamVO" alias="teamVO"/>
+		<typeAlias type="com.bskrec.club.vo.TeamImageVO" alias="teamImageVO"/>
+		<typeAlias type="com.bskrec.archive.vo.PlayerArchiveVO" alias="playerArchiveVO"/>	
+		<typeAlias type="com.bskrec.archive.vo.TeamArchiveVO" alias="teamArchiveVO"/>	
+	</typeAliases>
+</configuration>

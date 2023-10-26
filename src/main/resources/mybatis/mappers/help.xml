@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.help">
+	<select id="findId" resultType="String" parameterType="Map">
+<!-- 			SELECT DECODE(count(*),1,'Y',0,'N') -->
+		<![CDATA[
+			SELECT member_id
+			FROM t_bskrec_member
+			WHERE member_name = #{_name} AND email1 = #{_email1} AND email2 = #{_email2}
+		]]>
+	</select>
+	<select id="findPw" resultType="String" parameterType="Map">
+		<![CDATA[
+			SELECT DECODE(count(*),1,'Y',0,'N')
+			FROM t_bskrec_member
+			WHERE member_id = #{_id} AND email1 = #{_email1} AND email2 = #{_email2}
+		]]>
+	</select>
+</mapper>

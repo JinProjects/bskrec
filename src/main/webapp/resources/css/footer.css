@@ -1,0 +1,22 @@
+@charset "UTF-8";
+#realfooter{
+    /* margin-top: 50px; */
+    display: block;
+    background: url("../images/foot_bg.gif") repeat-x;
+    margin-top: auto;
+}
+.foot{
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.foot:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+.foot div{float: left; width: 350px; color: #999;}
+.foot p{font: 12px "NGothic",Gulim;}
+.copy{padding-top: 20px;}
+.foot ul { float:right; }
+.foot ul li { display:inline;padding:0 5px; font-size: 2.0rem;}

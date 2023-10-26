@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.club">
+	<resultMap type="playerVO" id="playerResult">
+		<result property="member_id" column="member_id"/>
+		<result property="team_name" column="team_name"/>
+		<result property="member_position" column="member_position"/>
+		<result property="height" column="height"/>
+		<result property="weight" column="weight"/>
+		<result property="footSize" column="footSize"/>
+		<result property="wingspan" column="wingspan"/>
+		<result property="sergeant" column="sergeant"/>
+	</resultMap>
+	<resultMap type="playerImageVO" id="playerImageResult">
+		<result property="image_id" column="image_id" />
+		<result property="member_id" column="member_id" />
+		<result property="fileName" column="fileName" />
+		<result property="fileType" column="fileType" />
+	</resultMap>
+	<resultMap type="teamVO" id="teamResult">
+		<result property="member_id" column="member_id"/>
+		<result property="team_name" column="team_name"/>
+		<result property="city" column="city"/>
+		<result property="state" column="state"/>
+	</resultMap>
+	<resultMap type="teamImageVO" id="teamImageResult">
+		<result property="image_id" column="image_id"/>
+		<result property="member_id" column="member_id"/>
+		<result property="fileName" column="fileName"/>
+		<result property="fileType" column="fileType"/>
+	</resultMap>
+	<select id="teamNameDup" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT DECODE(COUNT(*),1,'N',0,'Y')
+			FROM t_bskrec_team_register
+			WHERE team_name = #{team_name}
+		]]>
+	</select>
+	<insert id="insertNewPlayer" parameterType="java.util.Map">
+		<![CDATA[
+			insert into t_bskrec_player_register(
+												member_id,
+												team_name,
+												member_position,
+												height,
+												weight,
+												footSize,
+												wingspan,
+												sergeant
+											)values(
+												#{member_id:VARCHAR},
+												#{team_name:VARCHAR},
+												#{member_position},
+												#{height},
+												#{weight},
+												#{footSize},
+												#{wingspan},
+												#{sergeant}
+											)
+		]]>
+	</insert>
+	<insert id="insertPlayerImageFile" parameterType="playerImageVO">
+		<selectKey resultType="int" keyProperty="image_id" order="BEFORE">
+			select seq_player_image_id.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into t_bskrec_player_image(
+												image_id,
+												member_id,
+												fileName,
+												fileType
+											)values(
+												#{image_id},
+												#{member_id},
+												#{fileName},
+												#{fileType}
+											)
+		]]>
+	</insert>
+	<insert id="insertNewTeam" parameterType="java.util.Map">
+		<![CDATA[
+			insert into t_bskrec_team_register( member_id,
+												team_name,
+												city,
+												state
+												)values(
+												#{member_id},
+												#{team_name},
+												#{city},
+												#{state}
+												)
+		]]>
+	</insert>
+	<insert id="insertTeamImageFile" parameterType="teamImageVO">
+		<selectKey resultType="int" keyProperty="image_id" order="BEFORE">
+			select seq_team_image_id.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into t_bskrec_team_image( image_id,
+											 member_id,
+											 fileName,
+											 fileType
+											)values(
+											 #{image_id},
+											 #{member_id},
+											 #{fileName},
+											 #{fileType}
+											)
+		]]>
+	</insert>
+	<insert id="insertNewTeamMember" parameterType="String">
+		<selectKey resultType="int" keyProperty="team_member_no" order="BEFORE">
+			select seq_club_team_member_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into t_bskrec_team_member(team_member_no,
+											team_name,
+											member_id)
+											values
+											(#{team_member_no},
+											 #{team_name},
+											 #{member_id})
+		]]>
+	</insert>
+</mapper>

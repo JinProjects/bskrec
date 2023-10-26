@@ -1,0 +1,115 @@
+@charset "utf-8";
+#outter-join-wrap{
+    /* height: 100vh; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#outter-join-wrap #inner-join-wrap{
+    line-height: 1;
+    height: 100%; 
+     margin: 0 auto;
+}
+#outter-join-wrap #inner-join-wrap h2{
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+}
+#outter-join-wrap #inner-join-wrap p{
+    margin-bottom: 20px;
+}
+#outter-join-wrap #inner-join-wrap h3{
+   	margin: 19px 0 8px;
+    text-align: left;
+}
+#outter-join-wrap #inner-join-wrap .error-box{
+	display:block;
+	text-align:left;
+	margin: 9px 0 -2px;
+	font-size:12px;
+	line-height:14px;
+	color: red;
+}
+#outter-join-wrap #inner-join-wrap .ps-box{
+    display: block;
+    /* margin-bottom: 20px; */
+}
+#outter-join-wrap #inner-join-wrap .int{
+    width: 100%;
+    padding: 15px;
+}
+#outter-join-wrap #inner-join-wrap .sel{
+    width: 100%;
+    padding: 15px 10px;
+}
+#outter-join-wrap #inner-join-wrap .user-birthday-wrap .bir-wrap div{
+    display: inline-block;
+}
+
+.user-birthday-wrap .bir-wrap .bir-yy{
+    width: 150px;
+}
+.user-birthday-wrap .bir-wrap .bir-mm {
+    width: 150px;
+}
+.user-birthday-wrap .bir-wrap .bir-mm .sel{
+    padding: 15px;
+}
+.user-birthday-wrap .bir-wrap .bir-dd{
+    width: 150px;
+    
+}
+.hp-wrap .hp2-wrap .ps-box{
+    width: 384px;
+}
+.hp-wrap div{
+    display: inline-block;
+}
+.btn_wrap button{
+    width: 100%;
+    margin-top: 15px;
+}
+.btn_wrap button span{
+    display: inline-block;
+    padding: 15px;
+}
+.addr-wrap .addr1-wrap{
+    display: flex;
+    justify-content: flex-start;
+}
+.addr-wrap .addr-int{
+    width: 100%;
+    padding: 15px;
+}
+
+.addr-wrap .addr1-wrap .btn-addr{
+    width: 35%;
+    margin-left: 10px;
+}
+.addr-wrap .addr2-wrap h4{
+	text-align: left;
+    margin: 5px 0;
+}
+.profile-img-wrap {
+	position: relative;
+	width: 100%;
+	height: 200px;
+	margin-bottom: 20px;
+}
+.profile-img-wrap .thumbnail-wrap{
+	display: flex;
+}
+.profile-img-wrap .thumbnail-wrap #thumbnail{
+	width:200px;
+	height:200px;
+	display:inline-block;
+	left:0;
+    border:1px solid black; 
+}
+
+.profile-img-wrap .thumbnail-wrap #imgInput{
+	display: inline-block;
+	vertical-align: middle;	
+	margin-left:20px;
+	margin-top:100px;
+}

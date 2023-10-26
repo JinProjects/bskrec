@@ -49,6 +49,10 @@
 				class="com.bskrec.common.interceptor.ViewNameInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
-	
+	<!-- 멀티파트 리졸버 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="maxInMemorySize" value="52428800" />
+		<beans:property name="defaultEncoding" value="uft-8" /> 
+	</beans:bean>
 </beans:beans>

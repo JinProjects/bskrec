@@ -1,0 +1,207 @@
+@charset "utf-8";
+/* root --------------------------- */
+:root {
+    /* ------------ brand color */
+    --pb50: #E3E6ED;
+    --pb100: #BAC0D4;
+    --pb200: #8D97B7;
+    --pb300: #63709A;
+    --pb400: #445387;
+    --pb500: #223976; /* kbl sub color */
+    --pb600: #1C326E;
+    --pb700: #142A63;
+    --pb800: #0B2157;
+    --pb900: #011241; /* kbl main color */
+
+    --yr50: #FBEAE7;
+    --yr100: #FFCEBC;
+    --yr200: #FFAE90;
+    --yr300: #FF8F63;
+    --yr400: #FF7740;
+    --yr500: #FF601C; /* kbl point color */
+    --yr600: #F45A18;
+    --yr700: #E65313;
+    --yr800: #D84C0F;
+    --yr900: #BF3F06;
+
+    /* ------------ greyscale color */
+    --gray100: #F2F3F6;
+    --gray200: #E3E5E9;
+    --gray300: #D7D8DA;
+    --gray400: #BDBEC0;
+    --gray500: #747479;
+    --gray600: #424243;
+    --gray700: #2B2B2B;
+    --gray800: #1C1C1C;
+    --gray900: #121212;
+
+    /* ------------ system color */
+    --red: #FF3529;
+    --blue: #236CD9;
+    --white01: #FFFFFF;
+    --white02: #FFFFFF;
+    --black: #000000;
+
+    /* ------------ club color */
+    /* 원주 DB 프로미 : db */
+    --db-main: #03662C;
+    --db-point: #00399F;
+    --db-sub01: #71BB98;
+    --db-sub02: #C6EAD9;
+    /* 서울 삼성 썬더스 : ss */
+    --ss-main: #0032A0;
+    --ss-point: #FFB81C;
+    --ss-sub01: #6D94C7;
+    --ss-sub02: #CEDDF1;
+    /* 서울 SK 나이츠 : sk */
+    --sk-main: #DB0028;
+    --sk-point: #FF9600;
+    --sk-sub01: #EC696F;
+    --sk-sub02: #F9D3DA;
+    /* 창원 LG 세이커스 : lg */
+    --lg-main: #550E10;
+    --lg-point: #FFBA00;
+    --lg-sub01: #996E70;
+    --lg-sub02: #D3B0B2;
+    /* 고양 캐롯 점퍼스(오리온) : or */
+    --or-main: #FE4700;
+    --or-point: #1E0000;
+    --or-sub01: #FE9166;
+    --or-sub02: #FFD3C2;
+    /* 전수 KCC 이지스 : kcc */
+    --kcc-main: #07215A;
+    --kcc-point: #FF9D00;
+    --kcc-sub01: #666E80;
+    --kcc-sub02: #ACB3C3;
+    /* 안양 KGC 인삼공사 : kgc */
+    --kgc-main: #D61D38;
+    --kgc-point: #171717;
+    --kgc-sub01: #E9667E;
+    --kgc-sub02: #F2CBD2;
+    /* 수원 KT 소닉붐 : kt */
+    --kt-main: #E21820;
+    --kt-point: #F07C22;
+    --kt-sub01: #F36E6B;
+    --kt-sub02: #F1CBD1;
+    /* 대구 한국가스공사 : el */
+    --el-main: #201351;
+    --el-point: #BE1540;
+    --el-sub01: #797197;
+    --el-sub02: #BEBACF;
+    /* 울산 현대모비스 피버스 : hd */
+    --hd-main: #00287A;
+    --hd-point: #ED1C24;
+    --hd-sub01: #617196;
+    --hd-sub02: #BFC7D8;
+
+    /* ------------ box shadow */
+    --shadow-gr: .2rem .2rem 2rem rgba(1, 18, 65, 0.04);
+    --shadow-pb: .4rem .4rem 1.2rem rgba(1, 18, 65, 0.16);
+    --shadow-yr: .4rem .4rem 3.2rem rgba(255, 96, 28, 0.2);
+}
+
+.archive-player-table-wrap {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* display: flex; */
+    /* width: auto; */
+    width:58rem;
+    margin-top: 50px;
+    padding: 0px 0rem 8rem;
+}
+.archive-player-table{
+    /* 두테이블 간 상단 정렬됨 */
+    margin-top: auto; 
+}
+.archive-player-table:first-of-type table thead tr th:last-child{
+    /* border-right: 1px solid transparent; */
+    color: red;
+}
+.archive-player-table:last-of-type table thead tr th:first-child{
+    color: red;
+    /* border-left: 1px solid transparent; */
+}
+.archive-player-table:first-of-type table thead tr th{
+    /* margin-top: 100px 0; */
+    padding: 40px 0;
+    /* vertical-align: middle; */
+    /* align-content: center; */
+    /* color: red; */
+}
+
+.top-scroll-table{
+    width: 100%;
+    /* width: calc(100%-4rem); */
+    overflow-y: auto;
+}
+.top-scroll-table,
+.top-scroll-table table{
+    transform: rotateX(180deg);
+}
+
+.rebound{
+    /* rebound 부분을 줄이면 자동으로 줄어들까 */
+    
+}
+::-webkit-scrollbar {width: .4rem; height: .5rem;}
+::-webkit-scrollbar-thumb {background-color: lightgray; border-radius: 1rem; background-clip: padding-box;}
+::-webkit-scrollbar-track {background-color: transparent;}
+
+table{
+    width: 100%;
+    min-width:250px;
+    /* height: 100px; */
+    /* border:1px solid black; */
+    border-collapse: collapse;
+    border-spacing: 0;
+    position: relative;
+}
+
+table:before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    background-color: var(--black);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.content-wrap table tr th{
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
+
+
+table thead th {height: 1rem; padding: 1.2rem 1.6rem; text-align: center; font-size: 1.4rem; font-weight: 500; line-height: 1.4; border-bottom: 1px solid var(--gray100); background-color: var(--gray100); vertical-align: middle;}
+table thead th[rowspan]{border-right: 1px solid var(--gray200);}
+table thead th[colspan]{border-bottom:1px solid var(--gray200);}
+table thead th + * {border-left: 1px solid var(--gray200); }/* rebound 하단 th left  */
+table thead + tbody td {height: 1rem; padding: 1rem 1.3rem; text-align: center; font-size: 0.7rem; line-height: 1.4; border-bottom: 1px solid var(--gray200); background-color: var(--white01); vertical-align: middle; word-break: keep-all;}
+table thead + tbody td + * {border-top: 1px solid var(--gray200);}
+table thead + tbody td + * {border-left: 1px solid var(--gray200);}
+table thead + tbody td {border-right: 1px solid var(--gray200);} 
+table thead th[rowspan]:not(:last-child) { border-right: 1px solid var(--gray200);}
+
+/* table tbody td {font-size:0.3rem;  color:red;} */
+
+/* table {width: 100%; border-collapse: collapse; border-spacing: 0; position: relative;}
+table::before {content: ''; width: 100%; height: .1rem; background-color: var(--black); position: absolute; top: 0; left: 0;}
+table thead th {height: 4rem; padding: 1.2rem 1.6rem; text-align: center; font-size: 1.4rem; font-weight: 500; line-height: 1.4; border-bottom: 1px solid var(--gray100); background-color: var(--gray100); vertical-align: middle;}
+table thead th[rowspan]:not(:last-child) {border-right: 1px solid var(--gray200);}
+table thead th[colspan] {border-bottom: 1px solid var(--gray200);}
+table thead th[colspan] {border-bottom: 1px solid var(--gray200);}
+table thead th + * {border-left: 1px solid var(--gray200);}
+table thead + tbody td {height: 6rem; padding: 1.2rem 1.6rem; text-align: center; font-size: 1.6rem; line-height: 1.4; border-bottom: 1px solid var(--gray200); background-color: var(--white01); vertical-align: middle; word-break: keep-all;}
+table thead + tbody td + * {border-left: 1px solid var(--gray200);}
+table tbody th {height: 6rem; padding: 1.2rem 1.6rem; text-align: center; font-size: 1.6rem; font-weight: 500; line-height: 1.4; border-bottom: 1px solid var(--gray200); background-color: var(--gray100); vertical-align: middle; word-break: keep-all;}
+table tbody th[rowspan] {border-right: 1px solid var(--gray200);}
+table tbody th + * {border-left: 1px solid var(--gray200);}
+table tbody td {height: 6rem; padding: 1.2rem 1.6rem; text-align: center; text-align: center; font-size: 1.6rem; line-height: 1.4; border-bottom: 1px solid var(--gray200); background-color: var(--white01); vertical-align: middle; word-break: keep-all;}
+
+table tbody td button {margin: 0 auto;}
+table .title-ellipsis {width: 60rem; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+table input + label::before {margin: 0 auto;}  */
